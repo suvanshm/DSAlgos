@@ -3,10 +3,8 @@ def merge_sort(lst):
         return lst
 
     middle = len(lst) // 2
-    left = lst[:middle]
-    right = lst[middle:]
-    left_sort = merge_sort(left)
-    right_sort = merge_sort(right)
+    left_sort = merge_sort(lst[:middle])
+    right_sort = merge_sort(lst[middle:])
 
     return merge(left_sort, right_sort)
 
