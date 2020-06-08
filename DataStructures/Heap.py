@@ -17,24 +17,24 @@ class MinHeap:
         return self.count >= self.left_idx(idx)
 
     def add(self, val):
-        print("Adding {} to {}".format(val, self.list))
+        # print("Adding {} to {}".format(val, self.list))
         self.list.append(val)
         self.count += 1
         self.heapify_up()
-        print("New list: {}".format(self.list))
+        # print("New list: {}".format(self.list))
 
     def get_min(self):
         if self.count == 0:
-            print("No elements!")
+            # print("No elements!")
             return
         mininum = self.list[1]
-        print("Removing {} from {}".format(mininum, self.list))
+        # print("Removing {} from {}".format(mininum, self.list))
         self.list[1] = self.list[self.count]
         self.count -= 1
         self.list.pop()
-        print("New first element: {}".format(self.list))
+        # print("New first element: {}".format(self.list))
         self.heapify_down()
-        print("New list: {}".format(self.list))
+        # print("New list: {}".format(self.list))
         return mininum
 
     def smaller_child(self, idx):
@@ -59,13 +59,13 @@ class MinHeap:
     def heapify_down(self):
         idx = 1
         while self.contains_child(idx):
-            print("Heapifying down!")
+            # print("Heapifying down!")
             child_idx = self.smaller_child(idx)
-            print("Child index: {}".format(child_idx))
+            # print("Child index: {}".format(child_idx))
             child = self.list[child_idx]
             parent = self.list[idx]
-            print("Child: {}".format(child))
-            print("Parent: {}".format(parent))
+            # print("Child: {}".format(child))
+            # print("Parent: {}".format(parent))
             if child < parent:
                 self.list[idx] = child
                 self.list[child_idx] = parent
@@ -74,11 +74,11 @@ class MinHeap:
 
 # Testing
 
-testheap = MinHeap()
-testheap.add(3)
-testheap.add(6)
-testheap.add(11)
-testheap.add(4)
-testheap.add(1)
-print("---------")
-testheap.get_min()
+# testheap = MinHeap()
+# testheap.add(3)
+# testheap.add(6)
+# testheap.add(11)
+# testheap.add(4)
+# testheap.add(1)
+# print("---------")
+# testheap.get_min()
