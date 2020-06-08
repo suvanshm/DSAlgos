@@ -46,6 +46,28 @@ def dijkstras2(graph, start):
     return distances
 
 
+# Modified dijkstras using a target value
+def dijkstras3(graph, start, target):
+    paths_and_distances = {}
+    for vertex in graph.graph_dict.keys():
+        paths_and_distances[vertex] = [inf, [start]]
+    paths_and_distances[start][0] = 0
+    explore = [(0, start)]
+    while explore:
+        distance, current = heappop(explore)
+        currentvertex = graph.graph_dict[current]
+        neighbours = currentvertex.get_neighbours()
+        for neighbour, weight in neighbours:
+            newdistance = distance + weight
+            newpath = paths_and_distances[current][1] + [neighbour]
+            if newdistance < paths_and_distances[neighbour][0]:
+                paths_and_distances[neighbour][0] = newdistance
+                paths_and_distances[neighbour][1] = newpath
+                heappush(explore, (newdistance, neighbour))
+    return paths_and_distances[target]
+
+
+
 #Testing
 delhi = Vertex("Delhi")
 mumbai = Vertex("Mumbai")
@@ -77,4 +99,4 @@ india.add_edge(delhi, srinagar, 1.5)
 india.add_edge(kolkata, imphal, 1)
 india.add_edge(bhopal, jaipur, 1.5)
 
-print(dijkstras(india, "Delhi"))
+print(dijkstras3(india, "Surat", "Srinagar"))
