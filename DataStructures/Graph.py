@@ -13,6 +13,9 @@ class Vertex:
     def get_edges(self):
         return list(self.edges.keys())
 
+    def get_neighbours(self):
+        return list(self.edges.items())
+
 
 class Graph:
 
@@ -82,6 +85,7 @@ class Graph:
 # india.add_edge(delhi, srinagar, 1.5)
 # india.add_edge(kolkata, imphal, 1)
 # india.add_edge(bhopal, jaipur, 1.5)
+# print(delhi.get_neighbours())
 # print(delhi.get_edges())
 # print(mumbai.get_edges())
 # print(chennai.get_edges())
